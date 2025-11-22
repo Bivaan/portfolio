@@ -160,16 +160,22 @@ h2{font-size:1.25rem;margin:0 0 1rem}
 	.about-grid{grid-template-columns:1fr 75px;gap:2rem}
 }
 
+/* On wide viewports, show 4 project columns if space permits */
+@media (min-width:1100px){
+    .project-grid{grid-template-columns:repeat(4,1fr)}
+}
+
 /* Projects */
-.project-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+.project-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem;align-items:start}
 .project-card{background:var(--card);border-radius:12px;overflow:hidden;box-shadow:var(--shadow);display:flex;flex-direction:column;border:1px solid rgba(255,255,255,0.03)}
 .project-card{transition:transform .28s cubic-bezier(.2,.9,.2,1), box-shadow .2s}
-.project-thumb{height:180px;background-size:cover;background-position:center;border-bottom:1px solid rgba(255,255,255,0.03);position:relative}
+.project-thumb{height:160px;background-size:cover;background-position:center;border-bottom:1px solid rgba(255,255,255,0.03);position:relative}
 .project-thumb::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg, rgba(2,6,18,0.0), rgba(2,6,18,0.45));opacity:1;transition:opacity .28s}
 .project-card:hover .project-thumb{transform:scale(1.03)}
 .project-thumb.p1{background-image:url('images/currency.svg')}
 .project-thumb.p2{background-image:url('images/weather.svg')}
 .project-thumb.p3{background-image:url('images/stopwatch.svg')}
+.project-thumb.p4{background-image:url('images/calculator.svg')}
 .project-body{padding:1rem}
 .project-actions .btn{margin-right:.5rem}
 
