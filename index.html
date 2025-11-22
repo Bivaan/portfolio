@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Website</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+   
+</head>
+<body>
+    <div class="bg-blobs" aria-hidden="true">
+        <div class="bg-gradient"></div>
+        <div class="blob b1"></div>
+        <div class="blob b2"></div>
+        <div class="blob b3"></div>
+    </div>
+    <header class="site-header">
+        <div class="container header-inner">
+            <a class="logo" href="https://www.instagram.com/bivaanpoudyal/">Bivaan Poudyal</a>
+            <nav class="nav" id="nav">
+                <a href="#about">About</a>
+                <a href="#projects">Projects</a>
+                <a href="#skills">Skills</a>
+                <a href="#contact">Contact</a>
+            </nav>
+            <div class="controls">
+                <button id="theme-toggle" aria-label="Toggle theme">🌓</button>
+                <button id="nav-toggle" class="nav-toggle" aria-label="Toggle navigation">☰</button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero" id="home">
+            <div class="container">
+                <div class="hero-panel">
+                    <div class="hero-inner">
+                        <div class="hero-copy hero-content" data-reveal>
+                    <h1>Hi, I'm Bivaan Poudyal — Frontend Developer</h1>
+                    
+                        <a class="btn primary" href="#projects">View Projects</a>
+                        <a class="btn" href="#contact">Get in touch</a>
+                    </p>
+                        </div>
+                    
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="about container" id="about" data-reveal>
+            <h2>About Me</h2>
+            <div class="about-panel">
+                <div class="about-grid">
+                    <div>
+                        <p>I’m Bivaan, a beginner frontend developer exploring the world of web development. I’m currently learning HTML, CSS, and JavaScript, and I enjoy turning ideas into simple and responsive web pages. I’m focused on improving my skills and building projects that help me grow as a developer.</p>
+                    </div>
+                
+                </div>
+            </div>
+        </section>
+
+        <section class="projects container" id="projects">
+            <h2>Selected Projects</h2>
+            <div class="project-grid">
+                <article class="project-card" data-reveal>
+                    <div class="project-thumb p1"></div>
+                    <div class="project-body">
+                        <h3>Currency Converter</h3>
+                        <p>A lightweight currency converter that uses real-time exchange rates and provides an accessible, responsive UI for quick conversions.</p>
+                        <p class="project-actions"><a class="btn sm" href="https://bivaan.github.io/currencyconvert/">Live</a>
+                    </div>
+                </article>
+                <article class="project-card" data-reveal>
+                    <div class="project-thumb p2"></div>
+                    <div class="project-body">
+                        <h3>Weather App</h3>
+                        <p>Live weather app that fetches forecasts from a public API, supports location search, and displays responsive, easy-to-read forecasts.</p>
+                        <p class="project-actions"><a class="btn sm" href="https://bivaan.github.io/weather/">Live</a>
+                    </div>
+                </article>
+                <article class="project-card" data-reveal>
+                    <div class="project-thumb p3"></div>
+                    <div class="project-body">
+                        <h3>Stopwatch</h3>
+                        <p>Minimal, accurate stopwatch with start/stop/lap controls and keyboard shortcuts for quick time tracking and testing.</p>
+                        <p class="project-actions"><a class="btn sm" href="https://bivaan.github.io/stopwatch/">Live</a>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <section class="skills container" id="skills">
+            <h2>Skills</h2>
+            <div class="skill-list">
+                <span>HTML</span>
+                <span>CSS</span>
+                <span>JavaScript</span>
+                <span>Python</span>
+        
+            </div>
+        </section>
+
+        <section class="contact container" id="contact" data-reveal>
+            <h2>Contact</h2>
+            <div class="contact-grid">
+                <form id="contact-form">
+                    <label>Full name<input type="text" name="name" required></label>
+                    <label>Email<input type="email" name="email" required></label>
+                    <label>Message<textarea name="message" rows="6" required></textarea></label>
+                    <div class="form-actions">
+                        <button class="btn primary" type="submit">Send Message</button>
+                        <div id="form-feedback" class="form-feedback" aria-live="polite"></div>
+                    </div>
+                </form>
+                <div class="contact-info">
+                    <p>Prefer email? <a href="mailto:poudyalbivaan@gmail.com">poudyalbivaan@gmail.com</a></p>
+                    <p>Or find me on <a href="https://github.com/Bivaan">GitHub</a></p>
+                    <p>Contact number:9813817075</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,249 @@
+
+/* Basic reset and variables */
+:root{
+	/* Darkish blue default palette */
+	--bg: #051026; /* deep navy */
+	--card: rgba(255,255,255,0.03); /* subtle card surface */
+	--text: #e6f1ff; /* soft white */
+	--muted: #9fb7d6; /* muted light blue */
+	--accent: #2ad0ff; /* cyan accent */
+	--accent-2: #6a5cff; /* violet accent */
+	--glass: rgba(255,255,255,0.04);
+	--shadow: 0 8px 30px rgba(2,8,23,0.6);
+}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+	margin:0;font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+	/* unified diagonal dark gradient across the page */
+	background: linear-gradient(135deg, #0d1117 0%, #0b0f14 100%);
+	color:var(--text);-webkit-font-smoothing:antialiased;
+	line-height:1.45;
+}
+
+/* Typography */
+h1,h2,h3{font-family: 'Poppins', Inter, system-ui, sans-serif;margin:0}
+h1{font-weight:700;font-size:2.4rem;line-height:1.04}
+h2{font-weight:600}
+p.lead{color:var(--muted);font-size:1.5rem}
+.container{max-width:1100px;margin:0 auto;padding:2rem}
+
+/* Make sure anchored sections are offset beneath the sticky header */
+main > section { scroll-margin-top: 84px; }
+
+/* Lightweight page background: keep it simple for performance */
+/* Removed heavy or separate radial layers to keep a single consistent background */
+
+.site-header{
+	-webkit-backdrop-filter: blur(6px);
+	backdrop-filter: blur(6px);
+	/* darker translucent header */
+	background-color: rgba(3,8,20,0.36);
+	background: linear-gradient(180deg, rgba(2,6,18,0.45), rgba(2,6,18,0.28));
+	position: sticky;
+	top: 0;
+	z-index: 40;
+	border-bottom: 1px solid rgba(255,255,255,0.03);
+}
+.header-inner{display:flex;align-items:center;justify-content:space-between;gap:1rem}
+.logo{font-weight:700;letter-spacing:1px;color:var(--text);text-decoration:none}
+.nav{display:flex;gap:1rem}
+.nav a{color:var(--muted);text-decoration:none;padding:0.4rem 0.6rem;border-radius:6px}
+.nav a:hover{background:rgba(42,208,255,0.06);color:var(--text)}
+.controls{display:flex;gap:0.5rem}
+.nav-toggle{display:none;background:transparent;border:none;font-size:1.2rem}
+#theme-toggle{background:transparent;border:none;font-size:1.2rem}
+
+/* Hero */
+.hero{padding:4rem 0}
+.hero{
+	padding:4rem 0;
+	position:relative;
+	/* inherit the page background - no separate hero background to keep a unified theme */
+	background: transparent;
+	overflow:visible;
+}
+
+.hero-panel{
+	position: relative;
+	border-radius: 18px;
+	padding: 2.25rem;
+	margin: 0 auto;
+	max-width: 1100px;
+	/* soft, dark panel without backdrop-filter — purely gradients for performance */
+	background: linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.005));
+	border: 1px solid rgba(255,255,255,0.02);
+	box-shadow: 0 6px 18px rgba(2,8,23,0.45);
+	overflow: visible;
+}
+
+.hero-inner{
+	/* Use a single column flow so hero text can span full width.
+		 Removed two-column grid/flex to allow `.hero-content` to take 100% width. */
+	display: block;
+	gap: 0;
+	align-items: initial;
+}
+
+.hero-content{width:100%;max-width:100%;display:block}
+.hero-copy h1{font-size:2.4rem;margin:0 0 .6rem;color:var(--text)}
+.hero-copy p{color:var(--muted);margin:0 0 1rem}
+.hero-ctas .btn{margin-right:.6rem}
+/* Place the hero-media below the text and make it optional. */
+.hero-media{display:block;margin-top:1.25rem}
+.avatar{width:260px;height:260px;border-radius:22px;background:linear-gradient(135deg,var(--accent-2),var(--accent));box-shadow:0 6px 18px rgba(2,8,23,0.45)}
+
+/* soft neon edge: subtle colored rim around panel */
+.hero-panel::before{
+	content: '';
+	position: absolute;
+	inset: -1px; /* slightly outside to create rim */
+	border-radius: 19px;
+	/* a very subtle rim using low-opacity gradient — no blur */
+	background: linear-gradient(90deg, rgba(120,90,255,0.035), rgba(42,208,255,0.03));
+	z-index: -1;
+	opacity: .9;
+	transition: opacity .5s ease;
+}
+
+.hero-panel::after{
+	content: '';
+	position: absolute; inset:0; border-radius:18px; z-index:0; pointer-events:none;
+	background: linear-gradient(180deg, rgba(255,255,255,0.01), rgba(0,0,0,0.01));
+}
+.hero-ctas .btn{margin-right:.6rem}
+.avatar{width:260px;height:260px;border-radius:24px;background:linear-gradient(135deg,var(--accent-2),var(--accent));box-shadow:var(--shadow)}
+
+/* floating avatar */
+.avatar{animation: floaty 6s ease-in-out infinite;transform-origin:center}
+@keyframes floaty{0%{transform:translateY(0) rotate(-1deg)}50%{transform:translateY(-10px) rotate(1deg)}100%{transform:translateY(0) rotate(-1deg)}}
+
+/* Sections */
+h2{font-size:1.25rem;margin:0 0 1rem}
+/* About section — align spacing with other sections and tighten the panel */
+.about{padding:0 0 1rem}
+.about h2{font-size:1.5rem;margin-bottom:.75rem;margin-left:2.5rem}
+.about p{font-size:1.18rem;line-height:1.6;color:var(--muted);margin:0;max-width:none}
+.about-grid{display:grid;grid-template-columns:1fr;gap:.4rem;align-items:start}
+
+/* boxed panel for About to match hero visual style (tighter) */
+.about-panel{
+	position:relative;
+	border-radius:12px;
+	/* tighten panel so there is minimal empty space */
+	padding:0.5rem 0.9rem;
+	margin-left:2rem;
+	width:calc(100% - 2rem);
+	background: linear-gradient(180deg, rgba(255,255,255,0.008), rgba(255,255,255,0.004));
+	border: 1px solid rgba(255,255,255,0.02);
+	box-shadow: 0 6px 18px rgba(2,8,23,0.16);
+	margin-bottom:.35rem;
+}
+.about-panel::before{
+	content:'';
+	position:absolute;
+	inset:-1px;
+	border-radius:13px;
+	background: linear-gradient(90deg, rgba(120,90,255,0.02), rgba(42,208,255,0.02));
+	z-index:-1;
+	opacity:.9;
+	
+
+}
+
+/* ensure the grid inside the panel uses the container's horizontal alignment */
+.about-panel .about-grid{padding:0 1.5rem}
+.about-panel .about-grid > div{padding-left:10}
+
+/* at wide screens, allow an optional secondary column if content is provided */
+@media (min-width:800px){
+	.about-grid{grid-template-columns:1fr 75px;gap:2rem}
+}
+
+/* Projects */
+.project-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+.project-card{background:var(--card);border-radius:12px;overflow:hidden;box-shadow:var(--shadow);display:flex;flex-direction:column;border:1px solid rgba(255,255,255,0.03)}
+.project-card{transition:transform .28s cubic-bezier(.2,.9,.2,1), box-shadow .2s}
+.project-thumb{height:180px;background-size:cover;background-position:center;border-bottom:1px solid rgba(255,255,255,0.03);position:relative}
+.project-thumb::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg, rgba(2,6,18,0.0), rgba(2,6,18,0.45));opacity:1;transition:opacity .28s}
+.project-card:hover .project-thumb{transform:scale(1.03)}
+.project-thumb.p1{background-image:url('images/currency.svg')}
+.project-thumb.p2{background-image:url('images/weather.svg')}
+.project-thumb.p3{background-image:url('images/stopwatch.svg')}
+.project-body{padding:1rem}
+.project-actions .btn{margin-right:.5rem}
+
+/* Skills */
+.skill-list{display:flex;flex-wrap:wrap;gap:.5rem}
+.skill-list span{background:transparent;padding:.4rem .6rem;border-radius:8px;border:1px solid rgba(255,255,255,0.03);color:var(--text)}
+
+/* reveal animation */
+[data-reveal]{opacity:0;transform:translateY(18px);transition:opacity .6s ease, transform .6s ease}
+[data-reveal].show{opacity:1;transform:translateY(0)}
+
+/* stagger children of project grid */
+.project-grid [data-reveal]{transition-delay:.08s}
+
+/* header transition */
+.site-header{transition:background-color .24s ease, border-color .24s ease}
+
+/* button hover polish */
+.btn.primary:hover{transform:translateY(-3px);box-shadow:0 10px 30px rgba(6,182,212,0.12)}
+
+
+/* Contact */
+.contact-grid{display:grid;grid-template-columns:1fr 320px;gap:1.5rem}
+form label{display:block;margin-bottom:.8rem}
+input,textarea{width:100%;padding:.6rem;border:1px solid rgba(255,255,255,0.04);border-radius:8px;background:transparent;color:var(--text)}
+.form-actions{display:flex;align-items:center;gap:1rem}
+.form-feedback{color:var(--accent);font-weight:600}
+
+/* Make contact links (email) more visible against the dark background */
+.contact-info a{color:var(--accent);font-weight:700;text-decoration:underline}
+.contact-info a:hover{color:var(--accent-2);text-decoration:none}
+
+/* Buttons */
+.btn{display:inline-block;padding:.6rem .9rem;border-radius:10px;background:transparent;border:1px solid rgba(255,255,255,0.04);text-decoration:none;color:var(--text)}
+.btn.sm{padding:.4rem .6rem;font-size:.9rem}
+.btn.primary{background:linear-gradient(90deg,var(--accent),var(--accent-2));color:#00101a;border:0}
+.btn.ghost{background:transparent;border:1px solid rgba(255,255,255,0.04)}
+
+/* Footer */
+.site-footer{padding:2rem 0;background:transparent;text-align:center;color:var(--muted)}
+
+/* Responsive */
+@media (max-width:980px){
+	/* Keep single-column flow on narrower viewports as well */
+	.hero-inner{display:block}
+	.project-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media (max-width:760px){
+	.container{padding:1rem}
+	.nav{display:none;position:absolute;top:64px;right:1rem;background:var(--card);padding:1rem;border-radius:12px;box-shadow:var(--shadow);flex-direction:column}
+	/* when open, make nav visible */
+	.nav.open{display:flex}
+	.nav-toggle{display:inline-block}
+	.hero-inner{grid-template-columns:1fr}
+	.hero-media{display:none}
+	.project-grid{grid-template-columns:1fr}
+	.about-grid{grid-template-columns:1fr}
+	.about h2{margin-left:0}
+	.about-panel .about-grid{padding:0}
+	/* revert panel offset on small screens so it uses full container width */
+	.about-panel{margin-left:0;width:100%}
+	.contact-grid{grid-template-columns:1fr}
+
+	/* reduce heavy visual effects on mobile for performance */
+	body::before, .bg-gradient, .blob{filter: none; opacity: .7}
+	.project-thumb{height:160px}
+}
+
+/* Dark theme */
+body.dark{--bg:#0b1020;--card:#0f1724;--text:#e6eef8;--muted:#9aa6bf;--accent:#7c5cff;--accent-2:#06b6d4}
+
+/* small niceties */
+.project-card:hover{transform:translateY(-6px);transition:transform .25s ease}
+.btn{transition:all .18s ease}
+
+/* Disable previous heavy blob elements — use lightweight gradients on the hero instead */
+.bg-blobs{display:none !important}
